@@ -1,0 +1,17 @@
+C:\Users\Luis\Desktop\PED\core-app-PED-main\Core_V1_NET8\bin\Debug\net8.0-windows\Core_V1_NET8.exe
+C:\Users\Luis\Desktop\PED\core-app-PED-main\Core_V1_NET8\bin\Debug\net8.0-windows\Core_V1_NET8.deps.json
+C:\Users\Luis\Desktop\PED\core-app-PED-main\Core_V1_NET8\bin\Debug\net8.0-windows\Core_V1_NET8.runtimeconfig.json
+C:\Users\Luis\Desktop\PED\core-app-PED-main\Core_V1_NET8\bin\Debug\net8.0-windows\Core_V1_NET8.dll
+C:\Users\Luis\Desktop\PED\core-app-PED-main\Core_V1_NET8\bin\Debug\net8.0-windows\Core_V1_NET8.pdb
+C:\Users\Luis\Desktop\PED\core-app-PED-main\Core_V1_NET8\obj\Debug\net8.0-windows\Core_V1_NET8.Form1.resources
+C:\Users\Luis\Desktop\PED\core-app-PED-main\Core_V1_NET8\obj\Debug\net8.0-windows\Core_V1_NET8.FormAgregarTarea.resources
+C:\Users\Luis\Desktop\PED\core-app-PED-main\Core_V1_NET8\obj\Debug\net8.0-windows\Core_V1_NET8.csproj.GenerateResource.cache
+C:\Users\Luis\Desktop\PED\core-app-PED-main\Core_V1_NET8\obj\Debug\net8.0-windows\Core_V1_NET8.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Luis\Desktop\PED\core-app-PED-main\Core_V1_NET8\obj\Debug\net8.0-windows\Core_V1_NET8.AssemblyInfoInputs.cache
+C:\Users\Luis\Desktop\PED\core-app-PED-main\Core_V1_NET8\obj\Debug\net8.0-windows\Core_V1_NET8.AssemblyInfo.cs
+C:\Users\Luis\Desktop\PED\core-app-PED-main\Core_V1_NET8\obj\Debug\net8.0-windows\Core_V1_NET8.csproj.CoreCompileInputs.cache
+C:\Users\Luis\Desktop\PED\core-app-PED-main\Core_V1_NET8\obj\Debug\net8.0-windows\Core_V1_NET8.dll
+C:\Users\Luis\Desktop\PED\core-app-PED-main\Core_V1_NET8\obj\Debug\net8.0-windows\refint\Core_V1_NET8.dll
+C:\Users\Luis\Desktop\PED\core-app-PED-main\Core_V1_NET8\obj\Debug\net8.0-windows\Core_V1_NET8.pdb
+C:\Users\Luis\Desktop\PED\core-app-PED-main\Core_V1_NET8\obj\Debug\net8.0-windows\Core_V1_NET8.genruntimeconfig.cache
+C:\Users\Luis\Desktop\PED\core-app-PED-main\Core_V1_NET8\obj\Debug\net8.0-windows\ref\Core_V1_NET8.dll

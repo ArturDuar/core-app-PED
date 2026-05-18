@@ -114,6 +114,7 @@ namespace Core_V1_NET8
             textBox1.PlaceholderText = "Buscar tareas...";
             textBox1.Size = new Size(407, 19);
             textBox1.TabIndex = 3;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label2
             // 

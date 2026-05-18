@@ -3,11 +3,13 @@ namespace Core_V1_NET8
     public partial class Form1 : Form
     {
         private ColaPrioridadTareas colaTareas;
+        private ArbolBusquedaTareas arbolTareas;
 
         public Form1()
         {
             InitializeComponent();
             colaTareas = new ColaPrioridadTareas();
+            arbolTareas = new ArbolBusquedaTareas();
         }
 
         private void btnAgregarTarea_Click(object sender, EventArgs e)
@@ -23,6 +25,7 @@ namespace Core_V1_NET8
                 }
 
                 colaTareas.Encolar(nueva);
+                arbolTareas.Insertar(nueva);
                 ActualizarDashboard();
             }
         }
@@ -86,5 +89,33 @@ namespace Core_V1_NET8
 
             return tarjeta;
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string criterio = textBox1.Text.Trim();
+
+            // Si el buscador se vacía, se restablece el dashboard con todas las tareas
+            if (string.IsNullOrEmpty(criterio))
+            {
+                ActualizarDashboard();
+                return;
+            }
+
+            // Invoca la búsqueda por aproximación/prefijo en el árbol binario
+            ListaDinamica<Tarea> coincidencias = arbolTareas.BuscarPorPrefijo(criterio);
+
+            // Limpiamos la interfaz para pintar únicamente las tareas filtradas
+            flpMisTareas.Controls.Clear();
+
+            for (int i = 0; i < coincidencias.Count; i++)
+            {
+                Tarea tarea = coincidencias[i];
+                Panel nuevaTarjeta = CrearTarjetaTarea(tarea);
+                flpMisTareas.Controls.Add(nuevaTarjeta);
+            }
+        }
+
+
+
     }
 }
