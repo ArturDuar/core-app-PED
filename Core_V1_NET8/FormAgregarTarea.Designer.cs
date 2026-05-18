@@ -24,7 +24,7 @@ namespace Core_V1_NET8
             cmbPrioridad = new ComboBox();
             label4 = new Label();
             label3 = new Label();
-            maskedTextBox1 = new MaskedTextBox();
+            txtHoraEntrega = new MaskedTextBox();
             label2 = new Label();
             dtpFechaEntrega = new DateTimePicker();
             txtTitulo = new TextBox();
@@ -40,7 +40,7 @@ namespace Core_V1_NET8
             groupBox1.Controls.Add(cmbPrioridad);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(maskedTextBox1);
+            groupBox1.Controls.Add(txtHoraEntrega);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(dtpFechaEntrega);
             groupBox1.Controls.Add(txtTitulo);
@@ -119,18 +119,18 @@ namespace Core_V1_NET8
             label3.TabIndex = 5;
             label3.Text = "Hora de entrega";
             // 
-            // maskedTextBox1
+            // txtHoraEntrega
             // 
-            maskedTextBox1.BackColor = Color.FromArgb(64, 64, 64);
-            maskedTextBox1.BorderStyle = BorderStyle.None;
-            maskedTextBox1.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            maskedTextBox1.ForeColor = Color.White;
-            maskedTextBox1.Location = new Point(17, 168);
-            maskedTextBox1.Mask = "00:00";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(292, 22);
-            maskedTextBox1.TabIndex = 4;
-            maskedTextBox1.ValidatingType = typeof(DateTime);
+            txtHoraEntrega.BackColor = Color.FromArgb(64, 64, 64);
+            txtHoraEntrega.BorderStyle = BorderStyle.None;
+            txtHoraEntrega.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtHoraEntrega.ForeColor = Color.White;
+            txtHoraEntrega.Location = new Point(17, 168);
+            txtHoraEntrega.Mask = "00:00";
+            txtHoraEntrega.Name = "txtHoraEntrega";
+            txtHoraEntrega.Size = new Size(292, 22);
+            txtHoraEntrega.TabIndex = 4;
+            txtHoraEntrega.ValidatingType = typeof(DateTime);
             // 
             // label2
             // 
@@ -200,7 +200,7 @@ namespace Core_V1_NET8
         private System.Windows.Forms.ComboBox cmbPrioridad;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox txtHoraEntrega;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpFechaEntrega;
         private System.Windows.Forms.TextBox txtTitulo;

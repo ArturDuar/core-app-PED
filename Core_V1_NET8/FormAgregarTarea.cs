@@ -17,13 +17,33 @@ namespace Core_V1_NET8
                 return;
             }
 
+            // Intentamos convertir el texto de la máscara (ejemplo. "23:59") a TimeSpan
+            TimeSpan horaIngresada = TimeSpan.Zero;
+            if (TimeSpan.TryParse(txtHoraEntrega.Text, out TimeSpan horaParseada))
+            {
+                horaIngresada = horaParseada;
+            }
+
+            //  Asignamos todos los valores a la nueva tarea
             TareaNueva = new Tarea
             {
                 Titulo = txtTitulo.Text,
                 Descripcion = txtDescripcion.Text,
                 FechaEntrega = dtpFechaEntrega.Value.Date,
+                HoraEntrega = horaIngresada, // Por Aqui pasamos la hora ya convertida
                 Prioridad = prioridadSeleccionada
             };
+
+            // Guardamos en la base de datos
+            try
+            {
+                RepositorioTareas repo = new RepositorioTareas();
+                repo.GuardarTarea(TareaNueva);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar en la base de datos: " + ex.Message);
+            }
 
             DialogResult = DialogResult.OK;
             Close();
