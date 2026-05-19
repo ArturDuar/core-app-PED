@@ -28,23 +28,13 @@ BEGIN
 	(
 		-- Identificador único autoincremental
 		IdTarea      INT           NOT NULL IDENTITY(1,1) CONSTRAINT PK_Tareas PRIMARY KEY,
-
-		-- Datos principales
 		Titulo       NVARCHAR(200) NOT NULL,
 		Descripcion  NVARCHAR(1000) NOT NULL DEFAULT '',
-
-		-- Fecha y hora de entrega almacenadas en columnas separadas
-		-- para reflejar el modelo de dominio (DateTime + TimeSpan)
 		FechaEntrega DATE          NOT NULL,
 		HoraEntrega  TIME(0)       NOT NULL,
 
 		-- Nivel de prioridad: 1=Urgente, 2=Importante, 3=Normal
-		-- TINYINT es suficiente y eficiente para el enum NivelPrioridad
 		Prioridad    TINYINT       NOT NULL CONSTRAINT CK_Tareas_Prioridad CHECK (Prioridad IN (1, 2, 3)),
-
-		-- Indica si la tarea fue marcada como completada.
-		-- Las tareas completadas van a la ListaEnlazadaTareasCompletadas;
-		-- las pendientes (0) van al Min-Heap de prioridad.
 		Completada   BIT           NOT NULL DEFAULT 0
 	);
 END

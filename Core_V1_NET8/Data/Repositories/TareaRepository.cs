@@ -12,6 +12,8 @@ namespace Core_V1_NET8.Data.Repositories
     /// <c>System.Collections.Generic</c>. El método <see cref="ObtenerTodas"/>
     /// acumula resultados en un <see cref="ListaDinamica{T}"/> (Fase 1) y devuelve
     /// un arreglo primitivo <c>Tarea[]</c>.
+    /// SQL actúa exclusivamente como motor de almacenamiento; todo ordenamiento
+    /// y lógica de prioridad se resuelve en memoria por las estructuras de datos.
     /// </para>
     /// </summary>
     public sealed class TareaRepository : ITareaRepository
@@ -53,17 +55,14 @@ namespace Core_V1_NET8.Data.Repositories
 
         /// <inheritdoc/>
         /// <remarks>
-        /// Usa <see cref="ListaDinamica{T}"/> para acumular sin recurrir a
-        /// <c>List&lt;T&gt;</c> y retorna un arreglo primitivo <c>Tarea[]</c>.
-        /// El ORDER BY garantiza que al poblar el Min-Heap desde este arreglo
-        /// el gestor de estado itere en orden natural.
+        /// Devuelve las filas sin ordenamiento — el orden lo impone el Min-Heap
+        /// en memoria al momento de la inserción, usando <see cref="Tarea.CompareTo"/>.
         /// </remarks>
         public Tarea[] ObtenerTodas()
         {
             const string sql = @"
                 SELECT IdTarea, Titulo, Descripcion, FechaEntrega, HoraEntrega, Prioridad, Completada
-                FROM dbo.Tareas
-                ORDER BY Prioridad ASC, FechaEntrega ASC;";
+                FROM dbo.Tareas;";
 
             ListaDinamica<Tarea> buffer = new ListaDinamica<Tarea>();
 
