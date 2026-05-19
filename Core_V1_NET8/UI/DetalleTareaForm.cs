@@ -37,18 +37,18 @@ namespace Core_V1_NET8.UI
             // 2. Ajustes de layout dependientes del estado de la tarea
             Sizable = false;
 
-            pnlBarra.BackColor         = ColorPrioridad(tarea.Prioridad);
-            lblPrioridadBadge.Text     = tarea.Prioridad.ToString().ToUpperInvariant();
+            pnlBarra.BackColor          = ColorPrioridad(tarea.Prioridad);
+            lblPrioridadBadge.Text      = tarea.Prioridad.ToString().ToUpperInvariant();
             lblPrioridadBadge.ForeColor = ColorPrioridad(tarea.Prioridad);
-            lblTitulo.Text             = tarea.Titulo;
-            lblFechaHora.Text          = $"📅  {tarea.FechaEntrega:dd MMM yyyy}   🕐  {tarea.HoraEntrega:hh\\:mm}";
-            lblDescripcionValor.Text   = string.IsNullOrWhiteSpace(tarea.Descripcion)
+            txtTitulo.Text              = tarea.Titulo;
+            lblFechaHora.Text           = $"📅  {tarea.FechaEntrega:dd MMM yyyy}   🕐  {tarea.HoraEntrega:hh\\:mm}";
+            txtDescripcion.Text         = string.IsNullOrWhiteSpace(tarea.Descripcion)
                                             ? "(sin descripción)"
                                             : tarea.Descripcion;
 
             btnEditar.Visible  = esPendiente;
             btnEstado.Text     = esPendiente ? "✔  MARCAR COMPLETADA" : "↩  DESMARCAR";
-            btnEstado.Location = new Point(esPendiente ? 180 : 24, 390);
+            btnEstado.Location = new Point(esPendiente ? 180 : 24, 364);
             btnEstado.Size     = new Size(esPendiente ? 200 : 180, 36);
 
             // 4. Suscribir eventos
@@ -108,12 +108,12 @@ namespace Core_V1_NET8.UI
 
         private void RefrescarVistaLocal()
         {
-            lblTitulo.Text          = tarea.Titulo;
-            lblFechaHora.Text       = $"📅  {tarea.FechaEntrega:dd MMM yyyy}   🕐  {tarea.HoraEntrega:hh\\:mm}";
-            lblPrioridadBadge.Text  = tarea.Prioridad.ToString().ToUpperInvariant();
+            txtTitulo.Text              = tarea.Titulo;
+            lblFechaHora.Text           = $"📅  {tarea.FechaEntrega:dd MMM yyyy}   🕐  {tarea.HoraEntrega:hh\\:mm}";
+            lblPrioridadBadge.Text      = tarea.Prioridad.ToString().ToUpperInvariant();
             lblPrioridadBadge.ForeColor = ColorPrioridad(tarea.Prioridad);
             pnlBarra.BackColor          = ColorPrioridad(tarea.Prioridad);
-            lblDescripcionValor.Text    = string.IsNullOrWhiteSpace(tarea.Descripcion)
+            txtDescripcion.Text         = string.IsNullOrWhiteSpace(tarea.Descripcion)
                                             ? "(sin descripción)"
                                             : tarea.Descripcion;
         }

@@ -7,15 +7,15 @@ namespace Core_V1_NET8.UI
         private System.ComponentModel.IContainer? components = null;
 
         // ── CONTROLES ─────────────────────────────────────────────────────────
-        private Panel         pnlBarra           = null!;
-        private MaterialLabel lblPrioridadBadge  = null!;
-        private MaterialLabel lblTitulo          = null!;
-        private MaterialLabel lblFechaHora       = null!;
-        private Panel         pnlSep             = null!;
-        private MaterialLabel lblDescLabel        = null!;
-        private MaterialLabel lblDescripcionValor = null!;
-        private MaterialButton btnEditar          = null!;
-        private MaterialButton btnEstado          = null!;
+        private Panel                     pnlBarra           = null!;
+        private Label                     lblPrioridadBadge  = null!;
+        private MaterialTextBox           txtTitulo          = null!;
+        private Label                     lblFechaHora       = null!;
+        private Panel                     pnlSep             = null!;
+        private Label                     lblDescLabel       = null!;
+        private MaterialMultiLineTextBox2 txtDescripcion     = null!;
+        private MaterialButton            btnEditar          = null!;
+        private MaterialButton            btnEstado          = null!;
 
         protected override void Dispose(bool disposing)
         {
@@ -29,12 +29,12 @@ namespace Core_V1_NET8.UI
             components = new System.ComponentModel.Container();
 
             pnlBarra           = new Panel();
-            lblPrioridadBadge  = new MaterialLabel();
-            lblTitulo          = new MaterialLabel();
-            lblFechaHora       = new MaterialLabel();
+            lblPrioridadBadge  = new Label();
+            txtTitulo          = new MaterialTextBox();
+            lblFechaHora       = new Label();
             pnlSep             = new Panel();
-            lblDescLabel       = new MaterialLabel();
-            lblDescripcionValor = new MaterialLabel();
+            lblDescLabel       = new Label();
+            txtDescripcion     = new MaterialMultiLineTextBox2();
             btnEditar          = new MaterialButton();
             btnEstado          = new MaterialButton();
 
@@ -50,77 +50,87 @@ namespace Core_V1_NET8.UI
             // ── lblPrioridadBadge ─────────────────────────────────────────────
             lblPrioridadBadge.Text      = "";
             lblPrioridadBadge.Font      = new Font("Segoe UI", 8f, FontStyle.Bold);
-            lblPrioridadBadge.ForeColor = Color.FromArgb(80, 80, 80);  // sobreescrito
+            lblPrioridadBadge.ForeColor = Color.FromArgb(150, 150, 150);
+            lblPrioridadBadge.BackColor = Color.Transparent;
             lblPrioridadBadge.Location  = new Point(24, 76);
             lblPrioridadBadge.AutoSize  = true;
 
-            // ── lblTitulo ─────────────────────────────────────────────────────
-            lblTitulo.Text         = "";
-            lblTitulo.Font         = new Font("Segoe UI", 18f, FontStyle.Bold);
-            lblTitulo.ForeColor    = Color.FromArgb(230, 230, 230);
-            lblTitulo.Location     = new Point(24, 100);
-            lblTitulo.Size         = new Size(452, 60);
-            lblTitulo.AutoEllipsis = true;
+            // ── txtTitulo (readonly) ──────────────────────────────────────────
+            txtTitulo.Text            = "";
+            txtTitulo.Hint            = "";
+            txtTitulo.Font            = new Font("Roboto", 18f, FontStyle.Bold, GraphicsUnit.Pixel);
+            txtTitulo.Location        = new Point(24, 94);
+            txtTitulo.Size            = new Size(452, 50);
+            txtTitulo.ReadOnly        = true;
+            txtTitulo.AnimateReadOnly = false;
+            txtTitulo.BorderStyle     = BorderStyle.None;
+            txtTitulo.Depth           = 0;
+            txtTitulo.MouseState      = MaterialSkin.MouseState.OUT;
+            txtTitulo.TabStop         = false;
 
             // ── lblFechaHora ──────────────────────────────────────────────────
             lblFechaHora.Text      = "";
             lblFechaHora.Font      = new Font("Segoe UI", 10f);
             lblFechaHora.ForeColor = Color.FromArgb(150, 150, 150);
-            lblFechaHora.Location  = new Point(24, 166);
+            lblFechaHora.BackColor = Color.Transparent;
+            lblFechaHora.Location  = new Point(24, 154);
             lblFechaHora.AutoSize  = true;
 
             // ── pnlSep (separador) ────────────────────────────────────────────
-            pnlSep.BackColor = Color.FromArgb(55, 55, 55);
-            pnlSep.Location  = new Point(24, 196);
+            pnlSep.BackColor = Color.FromArgb(70, 100, 130);
+            pnlSep.Location  = new Point(24, 182);
             pnlSep.Size      = new Size(452, 1);
 
             // ── lblDescLabel ──────────────────────────────────────────────────
             lblDescLabel.Text      = "DESCRIPCIÓN";
             lblDescLabel.Font      = new Font("Segoe UI", 8f, FontStyle.Bold);
             lblDescLabel.ForeColor = Color.FromArgb(150, 150, 150);
-            lblDescLabel.Location  = new Point(24, 210);
+            lblDescLabel.BackColor = Color.Transparent;
+            lblDescLabel.Location  = new Point(24, 196);
             lblDescLabel.AutoSize  = true;
 
-            // ── lblDescripcionValor ───────────────────────────────────────────
-            lblDescripcionValor.Text         = "";
-            lblDescripcionValor.Font         = new Font("Segoe UI", 10f);
-            lblDescripcionValor.ForeColor    = Color.FromArgb(230, 230, 230);
-            lblDescripcionValor.Location     = new Point(24, 232);
-            lblDescripcionValor.Size         = new Size(452, 120);
-            lblDescripcionValor.AutoEllipsis = true;
+            // ── txtDescripcion (readonly, multilinea) ─────────────────────────
+            txtDescripcion.Hint       = "";
+            txtDescripcion.Location   = new Point(24, 216);
+            txtDescripcion.Size       = new Size(452, 130);
+            txtDescripcion.ReadOnly   = true;
+            txtDescripcion.Depth      = 0;
+            txtDescripcion.MouseState = MaterialSkin.MouseState.OUT;
+            txtDescripcion.TabStop    = false;
 
             // ── btnEditar ─────────────────────────────────────────────────────
+            // txtDescripcion.Bottom = 216+130 = 346 → botones en 346+18 = 364
             btnEditar.Text           = "✏  EDITAR";
             btnEditar.Type           = MaterialButton.MaterialButtonType.Outlined;
             btnEditar.UseAccentColor = false;
-            btnEditar.Location       = new Point(24, 390);
+            btnEditar.Location       = new Point(24, 364);
             btnEditar.Size           = new Size(140, 36);
-            btnEditar.Visible        = true;   // sobreescrito en constructor según esPendiente
+            btnEditar.Visible        = true;
 
             // ── btnEstado ─────────────────────────────────────────────────────
-            btnEstado.Text           = "✔  MARCAR COMPLETADA";   // sobreescrito en constructor
+            btnEstado.Text           = "✔  MARCAR COMPLETADA";
             btnEstado.Type           = MaterialButton.MaterialButtonType.Contained;
             btnEstado.UseAccentColor = true;
             btnEstado.ForeColor      = Color.FromArgb(20, 20, 20);
-            btnEstado.Location       = new Point(180, 390);       // sobreescrito en constructor
-            btnEstado.Size           = new Size(200, 36);         // sobreescrito en constructor
+            btnEstado.Location       = new Point(180, 364);
+            btnEstado.Size           = new Size(220, 36);
 
             // ── Ensamblado del formulario ─────────────────────────────────────
             // pnlBarra se añade AL ÚLTIMO para que quede en el frente del z-order.
             // En WinForms, Controls.Add inserta en índice 0 (frente) y empuja
             // los anteriores hacia atrás; el primero añadido termina siendo el más trasero.
             Controls.Add(lblPrioridadBadge);
-            Controls.Add(lblTitulo);
+            Controls.Add(txtTitulo);
             Controls.Add(lblFechaHora);
             Controls.Add(pnlSep);
             Controls.Add(lblDescLabel);
-            Controls.Add(lblDescripcionValor);
+            Controls.Add(txtDescripcion);
             Controls.Add(btnEditar);
             Controls.Add(btnEstado);
             Controls.Add(pnlBarra);   // ← último = primer plano, Dock=Top visible
 
             // ── Propiedades del formulario ────────────────────────────────────
-            ClientSize    = new Size(500, 460);
+            ClientSize    = new Size(500, 420);
             StartPosition = FormStartPosition.CenterParent;
             BackColor     = Color.FromArgb(32, 32, 32);
             Text          = "Detalle de tarea";

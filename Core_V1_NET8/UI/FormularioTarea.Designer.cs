@@ -7,16 +7,16 @@ namespace Core_V1_NET8.UI
         private System.ComponentModel.IContainer? components = null;
 
         // ── CONTROLES ─────────────────────────────────────────────────────────
-        private MaterialTextBox  txtTitulo      = null!;
-        private TextBox          txtDescripcion = null!;
-        private DateTimePicker   dtpFecha       = null!;
-        private MaterialTextBox  txtHora        = null!;
-        private MaterialComboBox cmbPrioridad   = null!;
-        private MaterialButton   btnGuardar     = null!;
-        private MaterialButton   btnCancelar    = null!;
-        private MaterialLabel    lblDesc        = null!;
-        private MaterialLabel    lblFecha       = null!;
-        private MaterialLabel    lblPrioridad   = null!;
+        private MaterialTextBox           txtTitulo      = null!;
+        private MaterialMultiLineTextBox2  txtDescripcion = null!;
+        private MaterialTextBox            txtFecha       = null!;
+        private MaterialTextBox            txtHora        = null!;
+        private MaterialComboBox           cmbPrioridad   = null!;
+        private MaterialButton             btnGuardar     = null!;
+        private MaterialButton             btnCancelar    = null!;
+        private Label                      lblFecha       = null!;
+        private Label                      lblHora        = null!;
+        private Label                      lblPrioridad   = null!;
 
         protected override void Dispose(bool disposing)
         {
@@ -27,16 +27,16 @@ namespace Core_V1_NET8.UI
 
         private void InitializeComponent()
         {
-            txtTitulo = new MaterialTextBox();
-            lblDesc = new MaterialLabel();
-            txtDescripcion = new TextBox();
-            lblFecha = new MaterialLabel();
-            dtpFecha = new DateTimePicker();
-            txtHora = new MaterialTextBox();
-            lblPrioridad = new MaterialLabel();
-            cmbPrioridad = new MaterialComboBox();
-            btnGuardar = new MaterialButton();
-            btnCancelar = new MaterialButton();
+            txtTitulo      = new MaterialTextBox();
+            txtDescripcion = new MaterialMultiLineTextBox2();
+            lblFecha       = new Label();
+            txtFecha       = new MaterialTextBox();
+            txtHora        = new MaterialTextBox();
+            lblHora        = new Label();
+            lblPrioridad   = new Label();
+            cmbPrioridad   = new MaterialComboBox();
+            btnGuardar     = new MaterialButton();
+            btnCancelar    = new MaterialButton();
             SuspendLayout();
             // 
             // txtTitulo
@@ -57,56 +57,52 @@ namespace Core_V1_NET8.UI
             txtTitulo.Text = "";
             txtTitulo.TrailingIcon = null;
             // 
-            // lblDesc
-            // 
-            lblDesc.AutoSize = true;
-            lblDesc.BackColor = Color.Transparent;
-            lblDesc.Depth = 0;
-            lblDesc.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            lblDesc.ForeColor = Color.FromArgb(150, 150, 150);
-            lblDesc.Location = new Point(26, 152);
-            lblDesc.MouseState = MaterialSkin.MouseState.HOVER;
-            lblDesc.Name = "lblDesc";
-            lblDesc.Size = new Size(84, 19);
-            lblDesc.TabIndex = 1;
-            lblDesc.Text = "Descripción";
             // 
             // txtDescripcion
             // 
-            txtDescripcion.BackColor = Color.FromArgb(48, 48, 48);
-            txtDescripcion.BorderStyle = BorderStyle.None;
-            txtDescripcion.Font = new Font("Segoe UI", 10F);
-            txtDescripcion.ForeColor = Color.FromArgb(230, 230, 230);
-            txtDescripcion.Location = new Point(24, 172);
-            txtDescripcion.Multiline = true;
-            txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.ScrollBars = ScrollBars.Vertical;
-            txtDescripcion.Size = new Size(432, 90);
-            txtDescripcion.TabIndex = 1;
+            txtDescripcion.Depth       = 0;
+            txtDescripcion.Hint        = "Descripción";
+            txtDescripcion.Location    = new Point(24, 152);
+            txtDescripcion.MouseState  = MaterialSkin.MouseState.OUT;
+            txtDescripcion.Name        = "txtDescripcion";
+            txtDescripcion.Size        = new Size(432, 110);
+            txtDescripcion.TabIndex    = 1;
             // 
             // lblFecha
             // 
-            lblFecha.AutoSize = true;
+            lblFecha.AutoSize  = true;
             lblFecha.BackColor = Color.Transparent;
-            lblFecha.Depth = 0;
-            lblFecha.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblFecha.Font      = new Font("Segoe UI", 8.5f);
             lblFecha.ForeColor = Color.FromArgb(150, 150, 150);
-            lblFecha.Location = new Point(26, 278);
-            lblFecha.MouseState = MaterialSkin.MouseState.HOVER;
-            lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(122, 19);
-            lblFecha.TabIndex = 2;
-            lblFecha.Text = "Fecha de entrega";
+            lblFecha.Location  = new Point(26, 278);
+            lblFecha.Text      = "Fecha de entrega";
             // 
-            // dtpFecha
+            // txtFecha
             // 
-            dtpFecha.CalendarForeColor = Color.FromArgb(230, 230, 230);
-            dtpFecha.CalendarMonthBackground = Color.FromArgb(48, 48, 48);
-            dtpFecha.Format = DateTimePickerFormat.Short;
-            dtpFecha.Location = new Point(24, 298);
-            dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(200, 23);
-            dtpFecha.TabIndex = 2;
+            txtFecha.AnimateReadOnly = false;
+            txtFecha.BorderStyle     = BorderStyle.None;
+            txtFecha.Depth           = 0;
+            txtFecha.Font            = new Font("Roboto", 16f, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtFecha.Hint            = "dd/MM/yyyy";
+            txtFecha.LeadingIcon     = null;
+            txtFecha.Location        = new Point(24, 296);
+            txtFecha.MaxLength       = 10;
+            txtFecha.MouseState      = MaterialSkin.MouseState.OUT;
+            txtFecha.Multiline       = false;
+            txtFecha.Name            = "txtFecha";
+            txtFecha.Size            = new Size(200, 50);
+            txtFecha.TabIndex        = 2;
+            txtFecha.Text            = "";
+            txtFecha.TrailingIcon    = null;
+            // 
+            // lblHora
+            // 
+            lblHora.AutoSize = true;
+            lblHora.BackColor = Color.Transparent;
+            lblHora.Font = new Font("Segoe UI", 8.5f);
+            lblHora.ForeColor = Color.FromArgb(150, 150, 150);
+            lblHora.Location = new Point(250, 278);
+            lblHora.Text = "Hora de entrega";
             // 
             // txtHora
             // 
@@ -116,7 +112,7 @@ namespace Core_V1_NET8.UI
             txtHora.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtHora.Hint = "Hora HH:MM";
             txtHora.LeadingIcon = null;
-            txtHora.Location = new Point(248, 278);
+            txtHora.Location = new Point(248, 296);
             txtHora.MaxLength = 50;
             txtHora.MouseState = MaterialSkin.MouseState.OUT;
             txtHora.Multiline = false;
@@ -128,17 +124,12 @@ namespace Core_V1_NET8.UI
             // 
             // lblPrioridad
             // 
-            lblPrioridad.AutoSize = true;
+            lblPrioridad.AutoSize  = true;
             lblPrioridad.BackColor = Color.Transparent;
-            lblPrioridad.Depth = 0;
-            lblPrioridad.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblPrioridad.Font      = new Font("Segoe UI", 8.5f);
             lblPrioridad.ForeColor = Color.FromArgb(150, 150, 150);
-            lblPrioridad.Location = new Point(26, 358);
-            lblPrioridad.MouseState = MaterialSkin.MouseState.HOVER;
-            lblPrioridad.Name = "lblPrioridad";
-            lblPrioridad.Size = new Size(65, 19);
-            lblPrioridad.TabIndex = 4;
-            lblPrioridad.Text = "Prioridad";
+            lblPrioridad.Location  = new Point(26, 360);
+            lblPrioridad.Text      = "Prioridad";
             // 
             // cmbPrioridad
             // 
@@ -203,10 +194,10 @@ namespace Core_V1_NET8.UI
             BackColor = Color.FromArgb(32, 32, 32);
             ClientSize = new Size(480, 540);
             Controls.Add(txtTitulo);
-            Controls.Add(lblDesc);
             Controls.Add(txtDescripcion);
             Controls.Add(lblFecha);
-            Controls.Add(dtpFecha);
+            Controls.Add(txtFecha);
+            Controls.Add(lblHora);
             Controls.Add(txtHora);
             Controls.Add(lblPrioridad);
             Controls.Add(cmbPrioridad);

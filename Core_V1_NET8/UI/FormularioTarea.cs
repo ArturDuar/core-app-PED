@@ -62,10 +62,10 @@ namespace Core_V1_NET8.UI
 
         private void PrecargarCampos(Tarea t)
         {
-            txtTitulo.Text          = t.Titulo;
-            txtDescripcion.Text     = t.Descripcion;
-            dtpFecha.Value          = t.FechaEntrega == default ? DateTime.Today : t.FechaEntrega;
-            txtHora.Text            = t.HoraEntrega.ToString(@"hh\:mm");
+            txtTitulo.Text            = t.Titulo;
+            txtDescripcion.Text        = t.Descripcion;
+            txtFecha.Text             = t.FechaEntrega == default ? "" : t.FechaEntrega.ToString("dd/MM/yyyy");
+            txtHora.Text              = t.HoraEntrega.ToString(@"hh\:mm");
             cmbPrioridad.SelectedItem = t.Prioridad;
         }
 
@@ -94,13 +94,22 @@ namespace Core_V1_NET8.UI
                 return;
             }
 
+            if (!DateTime.TryParseExact(txtFecha.Text.Trim(), "dd/MM/yyyy",
+                    System.Globalization.CultureInfo.InvariantCulture,
+                    System.Globalization.DateTimeStyles.None, out DateTime fecha))
+            {
+                MessageBox.Show("Formato de fecha inválido. Usa dd/MM/yyyy.", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             // En modo edición conservamos el ID y el estado Completada original
             TareaResultante = new Tarea
             {
                 IdTarea      = _tareaOriginal?.IdTarea ?? 0,
                 Titulo       = txtTitulo.Text.Trim(),
                 Descripcion  = txtDescripcion.Text.Trim(),
-                FechaEntrega = dtpFecha.Value.Date,
+                FechaEntrega = fecha,
                 HoraEntrega  = hora,
                 Prioridad    = prioridad,
                 Completada   = _tareaOriginal?.Completada ?? false

@@ -82,52 +82,9 @@ namespace Core_V1_NET8.UI
             Tarea? masUrgente = gestor.ObtenerTareaMasUrgente();
 
             if (masUrgente is null)
-            {
-                lblDestacadaBadge.Text      = "SIN TAREAS";
-                pnlDestacadaBadge.BackColor = Color.FromArgb(70, 70, 70);
-                lblDestacadaFecha.Text      = "";
-                lblDestacadaHora.Text       = "";
-                lblDestacadaTitulo.Text     = "No hay tareas pendientes";
-                lblDestacadaDetalle.Text    = "Agrega una tarea para empezar.";
-                lblDestacadaRegistro.Text   = "";
-                pnlDestacadaBarra.BackColor = Color.FromArgb(70, 70, 70);
-                btnMarcarCompletada.Visible = false;
-                pnlDestacadaDivider.Visible = false;
-                pnlDestacadaSep2.Visible    = false;
-                return;
-            }
-
-            pnlDestacadaSep2.Visible    = true;
-            btnMarcarCompletada.Visible = true;
-            pnlDestacadaDivider.Visible = true;
-
-            // Colores por prioridad
-            Color colorPrioridad = masUrgente.Prioridad switch
-            {
-                NivelPrioridad.Urgente    => Color.FromArgb(207, 102, 121),
-                NivelPrioridad.Importante => Color.FromArgb(230, 145,  56),
-                _                         => Color.FromArgb( 76, 175,  80)
-            };
-
-            // Franja superior
-            pnlDestacadaBarra.BackColor = colorPrioridad;
-
-            // Badge de prioridad
-            pnlDestacadaBadge.BackColor = colorPrioridad;
-            lblDestacadaBadge.Text      = masUrgente.Prioridad.ToString();
-
-            // Fecha y hora de entrega
-            lblDestacadaFecha.Text = $"📅  {masUrgente.FechaEntrega:dd/MM/yyyy}";
-            lblDestacadaHora.Text  = masUrgente.HoraEntrega == TimeSpan.Zero
-                ? "⏰  (opcional)"
-                : $"⏰  {masUrgente.HoraEntrega:hh\\:mm}";
-
-            // Título y descripción
-            lblDestacadaTitulo.Text  = masUrgente.Titulo;
-            lblDestacadaDetalle.Text = masUrgente.Descripcion;
-
-            // Pie de tarjeta
-            lblDestacadaRegistro.Text = $"🗓  Entrega: {masUrgente.FechaEntrega:dd/MM/yyyy}  {masUrgente.HoraEntrega:hh\\:mm}";
+                cardDestacada.MostrarVacio();
+            else
+                cardDestacada.MostrarTarea(masUrgente);
         }
 
         // ── PANEL DE TARJETAS (panel derecho) ────────────────────────────────

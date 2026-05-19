@@ -26,10 +26,18 @@ namespace Core_V1_NET8.Models
         {
             if (otra is null) return -1;
 
-            int comparacionPrioridad = Prioridad.CompareTo(otra.Prioridad);
-            if (comparacionPrioridad != 0) return comparacionPrioridad;
+            // Criterio 1 — Prioridad (menor valor enum = más urgente)
+            int cmpPrioridad = Prioridad.CompareTo(otra.Prioridad);
+            if (cmpPrioridad != 0) return cmpPrioridad;
 
-            return FechaEntrega.CompareTo(otra.FechaEntrega);
+            // Criterio 2 — Fecha+Hora de entrega combinadas (la más próxima gana)
+            DateTime fechaHoraPropia = FechaEntrega.Date + HoraEntrega;
+            DateTime fechaHoraOtra   = otra.FechaEntrega.Date + otra.HoraEntrega;
+            int cmpFechaHora = fechaHoraPropia.CompareTo(fechaHoraOtra);
+            if (cmpFechaHora != 0) return cmpFechaHora;
+
+            // Criterio 3 — Id (la más antigua, Id menor, tiene mayor prioridad)
+            return IdTarea.CompareTo(otra.IdTarea);
         }
     }
 }
